@@ -21,7 +21,20 @@
           <dd><?php echo $product['quantity']; ?></dd>
         </dl>
       </aside>
+      <form action="" method="post">
+      <input type="number" name="quantite" value="1">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <input type="submit" value="Ajouter au panier">
+      </form>
+         <?php //$n = count($_SESSION['panier']);
+        //for ($i = 0; $i<$n; $i++) {
+        echo $quantite.' '.$product['title']." dans votre panier";
+        //echo $_SESSION['panier']['id'];
+        //} 
+        var_dump($panier);
+        ?>
     <?php endif; ?>
+
     <ul>
       <li><a href="index.php">retour à l'index</a></li>
     </ul>
