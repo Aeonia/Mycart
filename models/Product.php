@@ -39,5 +39,42 @@ class Product extends Model
 
         return $product;
     }
+
+    public static function addquantity($panier,$id,$quantite) 
+    {   
+        $tableaudesid = array_column($panier, 'id');
+        $indexdupetittableau = array_search($id, $tableaudesid);
+        if ($indexdupetittableau===false) 
+        {
+            array_push($panier, array('id'=>$id, 'quantite'=>$quantite));
+
+        } else 
+        {
+           $panier[$indexdupetittableau]['quantite'] += $quantite;
+        }
+        return $panier;  
+    }
+
+    public static function readitems($id)
+    
+    {
+        $sql =
+            'SELECT * FROM products WHERE id=:id AND deleted_at IS NULL';
+
+        $product = null;
+
+        $pdo_statement = self::createStatement($sql);
+
+        if (
+            $pdo_statement &&
+            $pdo_statement->bindParam(':id', $id, PDO::PARAM_INT) &&
+            $pdo_statement->execute()
+        ) {
+            $product = $pdo_statement->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return $product;
+    }
 }
 
+    

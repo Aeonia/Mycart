@@ -31,12 +31,14 @@
         echo $quantite.' '.$product['title']." dans votre panier";
         //echo $_SESSION['panier']['id'];
         //} 
-        var_dump($panier);
+
+        var_dump($_SESSION['panier']);
         ?>
     <?php endif; ?>
 
     <ul>
       <li><a href="index.php">retour à l'index</a></li>
+       <li><a href="overview.php">mon panier</a></li>
     </ul>
   </body>
 </html>
